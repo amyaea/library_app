@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+library_app.access_library_data,access_library_data,library_app.model_library_data,base.group_user,1,1,1,1
+library_app.access_library_requested_books,access_library_requested_books,library_app.model_library_requested_books,base.group_user,1,1,1,1
+library_app.access_library.requester.address,access_library_requester_address,library_app.model_library_requester_address,base.group_user,1,1,1,1

@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+
+    <record id="library_view_form" model="ir.ui.view">
+        <field name="name">library.form</field>
+        <field name="model">library.data</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <field name="coverImg" widget="image" class="oe_avatar"/>
+                    <group>
+                        <field name="lisbn"/>
+                        <field name="book_name" required="1"/>
+                        <field name="isbn" required="1"/>
+                        <field name="author"/>
+                        <field name="book_category" required="1"/>
+                    </group>
+                    <group>
+                        <field name="is_it_borrowed" required="1"/>
+                        <field name="no_of_requests"/>
+                        <field name="active" invisible="1"/>
+                    </group>
+                </sheet>
+                <sheet>
+                    <notebook>
+                    <page string="Details">
+                        <group>
+                        <field name="book_summary"/>
+                        <field name="author_message"/>
+                        </group>
+                    </page>
+                    <page string="Production info">
+                        <group>
+                        <field name="publish_date"/>
+                        <field name="publish_location"/>
+                        </group>
+                    </page>
+                        <page string="Comments">
+                            <group>
+                            <field name="book_comments" placeholder="Any comments on the book?"
+                            options="{'collaborative':true, 'resizable':true}"/>
+                            </group>
+                        </page>
+                </notebook>
+                </sheet>
+                <sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" groups="base.group_user"/>
+                        <field name="activity_ids"/>
+                        <field name="message_ids"/>
+                    </div>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="library_view_tree" model="ir.ui.view">
+        <field name="name">library.tree</field>
+        <field name="model">library.data</field>
+        <field name="arch" type="xml">
+            <tree sample="1" multi_edit="1">
+                <field name="book_name"/>
+                <field name="isbn"/>
+                <field name="author" optional="hide"/>
+                <field name="book_category" optional="hide"/>
+                <field name="is_it_borrowed"/>
+                <field name="active" invisible="1"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="library_view_search" model="ir.ui.view">
+        <field name="name">library.search</field>
+        <field name="model">library.data</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="book_name"/>
+                <field name="isbn"/>
+                <field name="author"/>
+                <field name="book_category"/>
+                <field name="is_it_borrowed"/>
+                <filter name="filter_borrowed" string="Borrowed" domain="[('is_it_borrowed','=','Yes')]"/>
+                <separator/>
+                <filter name="filter_not_borrowed" string="Not Borrowed" domain="[('is_it_borrowed','=','No')]"/>
+                <group>
+                    <filter name="groupby_author" string="Author" context="{'group_by':'author'}"/>
+                </group>
+                <group>
+                    <filter name="groupby_borrow" string="Borrowed or not" context="{'group_by':'is_it_borrowed'}"/>
+                </group>
+                <searchpanel>
+                    <field name="book_category" string="Category" enable_counters="1"/>
+                </searchpanel>
+            </search>
+        </field>
+    </record>
+
+    <record id="show_books_action" model="ir.actions.act_window">
+        <field name="name">Books Available</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">library.data</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{'default_is_it_borrowed':'No'}</field>
+        <field name="domain">[('is_it_borrowed','=','No')]</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Either there are no books available on the shelf yet or all the books have been borrowed
+            </p>
+        </field>
+    </record>
+
+    <record id="show_archive_action" model="ir.actions.act_window">
+        <field name="name">Archived Books</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">library.data</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{}</field>
+        <field name="domain">[('active','=',False)]</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                There are no archived books
+            </p>
+        </field>
+    </record>
+
+</odoo>

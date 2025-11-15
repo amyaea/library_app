@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+
+    <record id="book_1" model="library.data">
+        <field name="book_name">The Silent Garden</field>
+        <field name="isbn">978-1-4528-7689-1</field>
+        <field name="author">Alice Monroe</field>
+        <field name="is_it_borrowed">No</field>
+        <field name="book_category">fi</field>
+        <field name="book_summary">A heartwarming tale of a young woman who discovers a hidden garden that changes her life forever. Filled with mystery and hope, this novel explores the resilience of the human spirit.</field>
+        <field name="author_message">"Every garden has a story to tell, and sometimes, all we need is a little silence to listen."</field>
+        <field name="publish_date">2018-03-15</field>
+        <field name="publish_location">New York, USA</field>
+        <field name="book_comments">"A deeply emotional read that will leave you thinking long after finishing."</field>
+    </record>
+
+    <record id="book_2" model="library.data">
+        <field name="book_name">Quantum Night</field>
+        <field name="isbn">978-0-471-98764-3</field>
+        <field name="author">William Hall</field>
+        <field name="is_it_borrowed">Yes</field>
+        <field name="book_category">scifi</field>
+        <field name="book_summary">A scientist discovers a way to access alternate dimensions, only to realize the consequences are far more dangerous than anticipated.</field>
+        <field name="author_message">"The future is not set in stone. Every choice we make leads to another unknown world."</field>
+        <field name="publish_date">2021-06-05</field>
+        <field name="publish_location">London, UK</field>
+        <field name="book_comments">"An incredible mind-bending adventure that keeps you on the edge of your seat."</field>
+    </record>
+
+    <record id="book_3" model="library.data">
+        <field name="book_name">The Last Echo</field>
+        <field name="isbn">978-3-8647-9092-4</field>
+        <field name="author">Marcus LeVell</field>
+        <field name="is_it_borrowed">No</field>
+        <field name="book_category">thriller</field>
+        <field name="book_summary">A detective is called in to investigate a string of mysterious disappearances, each tied to an ancient curse. What he uncovers is beyond belief.</field>
+        <field name="author_message">"Truth hides in the dark corners, waiting to be discovered."</field>
+        <field name="publish_date">2020-09-13</field>
+        <field name="publish_location">Berlin, Germany</field>
+        <field name="book_comments">"A gripping narrative full of twists and turns."</field>
+    </record>
+
+    <record id="book_4" model="library.data">
+        <field name="book_name">Dreams of Elysium</field>
+        <field name="isbn">978-1-6129-4392-8</field>
+        <field name="author">Eleanor Thorne</field>
+        <field name="is_it_borrowed">No</field>
+        <field name="book_category">fantasy</field>
+        <field name="book_summary">A young mage embarks on a quest to restore balance to a crumbling magical realm, uncovering secrets about her past that could change everything.</field>
+        <field name="author_message">"The most powerful magic lies within, waiting for the right moment to awaken."</field>
+        <field name="publish_date">2016-12-01</field>
+        <field name="publish_location">Toronto, Canada</field>
+        <field name="book_comments">"An enchanting tale that will transport you to another world."</field>
+    </record>
+
+    <record id="book_5" model="library.data">
+        <field name="book_name">Hidden in the Shadows</field>
+        <field name="isbn">978-0-8070-5310-7</field>
+        <field name="author">Samuel Pierce</field>
+        <field name="is_it_borrowed">Yes</field>
+        <field name="book_category">mystery</field>
+        <field name="book_summary">A small-town journalist stumbles upon a hidden conspiracy while investigating a local crime, leading to life-threatening consequences.</field>
+        <field name="author_message">"Every secret has a cost, but some truths are worth the price."</field>
+        <field name="publish_date">2019-02-20</field>
+        <field name="publish_location">Sydney, Australia</field>
+        <field name="book_comments">"A brilliant, tense mystery that you won’t be able to put down."</field>
+    </record>
+
+</odoo>

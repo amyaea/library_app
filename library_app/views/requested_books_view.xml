@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+
+    <record id="requested_books_form_view" model="ir.ui.view">
+        <field name="name">requested.books.form</field>
+        <field name="model">library.requested.books</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                        <button name="prepare_book" string="Book found" type="object" data-hotkey="f"/>
+                        <button name="lease_book" string="Lease book" type="object" class="oe_highlight" data-hotkey="l"/>
+                </header>
+
+                <header>
+
+                    <button name="%(deliver_to_home_action)d" string="Deliver to home" type="action" context="{'default_book_name': active_id}"/>
+
+                </header>
+
+                <sheet>
+                    <header>
+                        <field name="state" widget="statusbar"/>
+                    </header>
+                    <group>
+                        <field name="book_name"/>
+                        <field name="isbn"/>
+                        <field name="author"/>
+                        <field name="is_it_borrowed"/>
+                        <field name="book_category" attrs="{'invisible':[('requester_age', '&lt;' ,18)]}"/>
+                        <!-- <field name="book_category" attrs="{'readonly':[('requester_age', '&lt;' ,18)]}"/> -->
+                        <!-- <field name="book_category" attrs="{'required':[('requester_age', '&lt;' ,18)]}"/> -->
+                        <field name="request_time"/>
+                        <field name="requester_dob" default_focus="1"/>
+                        <field name="requester_age"/>
+                    </group>
+                </sheet>
+                <sheet>
+                    <notebook>
+                    <page string="Details">
+                        <group>
+                        <field name="book_summary"/>
+                        <field name="author_message"/>
+                        </group>
+                    </page>
+                    <page string="Production info">
+                        <group>
+                        <field name="publish_date"/>
+                        <field name="publish_location"/>
+                        </group>
+                    </page>
+                </notebook>
+                </sheet>
+                <sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" groups="base.group_user"/>
+                        <field name="activity_ids"/>
+                        <field name="message_ids"/>
+                    </div>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="requested_books_tree_view" model="ir.ui.view">
+        <field name="name">requested.books.tree</field>
+        <field name="model">library.requested.books</field>
+        <field name="arch" type="xml">
+            <tree
+            decoration-success="state == 'receive'"
+                       decoration-info="state == 'preparing'"
+                       decoration-muted="state == 'requested'">
+                <field name="book_name" optional="show"/>
+                <field name="isbn" optional="show"/>
+                <field name="author" optional="show"/>
+                <field name="is_it_borrowed" optional="hide"/>
+                <field name="book_category" optional="show"/>
+                <field name="request_time" string="Time requested" optional="show"/>
+                <field name="requester_dob" optional="hide"/>
+                <field name="requester_age" optional="hide"/>
+                <field name="state" widget="badge"
+                       decoration-success="state == 'receive'"
+                       decoration-info="state == 'preparing'"
+                       decoration-muted="state == 'requested'" optional="show"/>
+                <field name="activity_ids" widget="list_activity" optional="show"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="requested_books_view_search" model="ir.ui.view">
+        <field name="name">library.search</field>
+        <field name="model">library.requested.books</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="book_name"/>
+                <field name="isbn"/>
+                <field name="author"/>
+                <field name="book_category"/>
+                <field name="requester_age"/>
+            </search>
+        </field>
+    </record>
+
+    <!--<record id="requested_books_activity_view" model="ir.ui.view">
+        <field name="name">requested.books.activity</field>
+        <field name="model">library.requested.books</field>
+        <field name="arch" type="xml">
+            <activity>
+                <field name="book_name"/>
+                <field name="author"/>
+                <templates>
+                    <div t-name="activity-box">
+                        <img t-att-src="activity_image('library.requested.books', 'image', record.isbn.raw_value)"
+                        t-att-title="record.isbn.value" t-att-alt="record.isbn.value"/>
+                        <div>
+                            <field name="isbn" display="full"/>
+                        </div>
+                    </div>
+                </templates>
+            </activity>
+        </field>
+    </record>-->
+
+    <record id="borrow_book_action" model="ir.actions.act_window">
+        <field name="name">Requested Books</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">library.requested.books</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No requested books yet
+            </p>
+        </field>
+    </record>
+
+</odoo>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="seq_gen" model="ir.sequence">
+        <field name="name">seq.gen</field>
+        <field name="code">seq.gen.code</field>
+        <field name="prefix">BN</field>
+        <field name="padding">5</field>
+    </record>
+</odoo>

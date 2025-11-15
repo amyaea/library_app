@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<odoo>
+
+    <record id="deliver_to_home_form" model="ir.ui.view">
+
+        <field name="name">deliver.to.home.form</field>
+        <field name="model">library.requester.address</field>
+        <field name="arch" type="xml">
+
+            <form>
+
+                <group>
+
+                    <field name="book_name"/>
+                    <field name="req_address"/>
+
+                </group>
+
+                <group>
+
+                    <field name="req_phone"/>
+                    <field name="req_email"/>
+
+                </group>
+
+                <button type="object" name="deliver" string="hey"/>
+
+            </form>
+
+        </field>
+
+    </record>
+
+    <record id="deliver_to_home_action" model="ir.actions.act_window">
+
+        <field name="name">Deliver To Home</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">library.requester.address</field>
+        <field name="view_mode">form</field>
+        <field name="context">{}</field>
+        <field name="target">new</field>
+
+    </record>
+
+</odoo>

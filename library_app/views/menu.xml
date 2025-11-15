@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+
+    <menuitem id="library_root_menu"
+              name="Library"
+              sequence="0"/>
+
+    <menuitem id="library_show_books"
+              name="Show Books"
+              parent="library_root_menu"
+              action="show_books_action"/>
+
+    <menuitem id="library_show_archive"
+              name="Archived"
+              parent="library_root_menu"
+              action="show_archive_action"/>
+
+    <menuitem id="library_borrow_book"
+              name="Borrow A Book"
+              parent="library_root_menu"
+              action="borrow_book_action"/>
+
+</odoo>
